@@ -46,7 +46,6 @@ body {
 	position: absolute;
 	top: 0;
   left: 0;
-
 }
 
 .front {
@@ -56,5 +55,26 @@ body {
 }
 
 .back {
-	transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  width: 100%;
+}
+
+.fas {
+  border-radius: 7%;
+  padding: .5rem;
+  background-color: gray;
+  color: white;
+}
+
+.fas:hover {
+  background-color:white;
+  color: gray;
+  transition: 1s;
+  border: 1px black solid;
+}
+
+.song-display {
+  border: 1px solid rgba(136,136,136, .8);
+  border-radius: 4%;
+  padding: .5rem;
 }

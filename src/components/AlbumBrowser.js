@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import fetchAlbum from '../queries/fetchAlbum'
+import AlbumInfo from './AlbumInfo'
 
 class AlbumBrowser extends Component {
     constructor(props){
@@ -31,13 +32,7 @@ class AlbumBrowser extends Component {
                                     <img className="img-responsive album-cover-image"src="https://images.unsplash.com/photo-1496239298983-ebf973a467dc?auto=format&fit=crop&w=1050&q=80"/>
                                 </div>
                         </div>
-                            <div className="back">
-                                <ul>
-                                    <li>song 1</li>
-                                    <li>song 2</li>
-                                    <li>song 3</li>
-                                </ul>
-                            </div>
+                            <AlbumInfo albumId={this.props.match.params.id}/>
                         </div>
                         
                     </div>

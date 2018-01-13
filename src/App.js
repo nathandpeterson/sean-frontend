@@ -4,7 +4,7 @@ import { ApolloClient } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import { HttpLink } from 'apollo-link-http'
 import AlbumBrowser from './components/AlbumBrowser'
-import Player from './components/Player'
+import SongInfo from './components/SongInfo'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 const client = new ApolloClient({
