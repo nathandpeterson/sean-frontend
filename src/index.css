@@ -2,4 +2,59 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: #232526; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #232526, #414345); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #232526, #414345); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 100%;
+  align-items: center;
+}
+
+.card-container {
+  margin-top: 3rem;
+  display: flex;
+  height: 22rem;
+  width: 26rem;
+  perspective: 1000px;
+}
+
+.album-cover-container {
+  max-height: 25rem;
+  max-width: 25rem;
+  padding: .75rem;
+}
+
+.album-cover-image {
+  width: 100%;
+}
+
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+  left: 0;
+
+}
+
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+.back {
+	transform: rotateY(180deg);
 }
