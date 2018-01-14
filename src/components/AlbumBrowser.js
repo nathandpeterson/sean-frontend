@@ -11,6 +11,7 @@ class AlbumBrowser extends Component {
     }
 
     clickHandler = () => {
+        this.state.clicked ? this.setState({clicked: false }) :
         this.setState({ clicked: true })
     }
 
@@ -19,7 +20,8 @@ class AlbumBrowser extends Component {
         if(!album) {return <div> Loading... </div>}
        return (<div className="card-container">
                 <div className="card"  onClick={this.clickHandler}>
-                   <CoverImage album={ album }/>
+                  {!this.state.clicked && <CoverImage album={ album }/>}
+                  {this.state.clicked && <AlbumInfo albumId ={this.props.match.params.id}/>}
                 </div>     
             </div>)
                         
