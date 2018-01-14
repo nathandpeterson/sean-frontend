@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import SongInfo from './SongInfo'
 import FetchSongs from '../queries/fetchSongs'
-import { graphql } from 'react-apollo'
+
 
 class AlbumInfo extends Component {
 
@@ -10,12 +10,8 @@ class AlbumInfo extends Component {
         return  <div className="back">
        <div className="song-list">
             <ul className="list-group">
-                <li className="list-group-item">song 1</li>
-                <li className="list-group-item">song 2</li>
-                <li className="list-group-item">song 3</li>
                 
-                {this.props.data &&
-                <SongInfo albumId={this.props.albumId}/>}
+                <SongInfo albumId={this.props.albumId}/>
 
             </ul>
         </div>
@@ -23,6 +19,4 @@ class AlbumInfo extends Component {
     }
 }
 
-export default graphql(FetchSongs, {
-    options: (props) => { return { variables: {id: props.albumId } } }
-})(AlbumInfo)
+export default AlbumInfo

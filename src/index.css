@@ -35,30 +35,6 @@ body {
   width: 100%;
 }
 
-.flipper {
-	transition: 0.6s;
-	transform-style: preserve-3d;
-	position: relative;
-}
-
-.front, .back {
-	backface-visibility: hidden;
-	position: absolute;
-	top: 0;
-  left: 0;
-}
-
-.front {
-	z-index: 2;
-	/* for firefox 31 */
-	transform: rotateY(0deg);
-}
-
-.back {
-  transform: rotateY(180deg);
-  width: 100%;
-}
-
 .fas {
   border-radius: 7%;
   padding: .5rem;
@@ -76,5 +52,5 @@ body {
 .song-display {
   border: 1px solid rgba(136,136,136, .8);
   border-radius: 4%;
-  padding: .5rem;
+  width: 25rem;
 }
