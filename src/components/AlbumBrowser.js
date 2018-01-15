@@ -3,29 +3,23 @@ import { graphql } from 'react-apollo'
 import fetchAlbum from '../queries/fetchAlbum'
 import AlbumInfo from './AlbumInfo'
 import CoverImage from './CoverImage'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 class AlbumBrowser extends Component {
-    constructor(props){
-        super(props)
-        this.state = { clicked: false }
-    }
 
-    clickHandler = () => {
-        this.state.clicked ? this.setState({clicked: false }) :
-        this.setState({ clicked: true })
+    revealAlbumInfo = () => {
+        this.props.history.push(this.props.location.pathname + '/songs')
     }
-
+    
     render() {
         const { album } = this.props.data
         if(!album) {return <div> Loading... </div>}
-       return (<div className="card-container">
-                <div className="card"  onClick={this.clickHandler}>
-                  {!this.state.clicked && <CoverImage album={ album }/>}
-                  {this.state.clicked && <AlbumInfo albumId ={this.props.match.params.id}/>}
-                </div>     
-            </div>)
-                        
+    
+        return (<div onClick={this.revealAlbumInfo}>
+                      <CoverImage  album={ album }/>
+                     </div>)     
     }
+
 }
 
 export default graphql(fetchAlbum, {

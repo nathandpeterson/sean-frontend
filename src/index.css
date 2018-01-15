@@ -54,3 +54,8 @@ body {
   border-radius: 4%;
   width: 25rem;
 }
+
+.progress {
+  height: 1.5rem;
+  width: 100%;
+}

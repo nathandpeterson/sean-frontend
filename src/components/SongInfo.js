@@ -1,28 +1,38 @@
 import React, { Component } from 'react'
 import FetchSongs from '../queries/fetchSongs'
 import { graphql } from 'react-apollo'
+import Player from './Player'
 
 class SongInfo extends Component {
+    constructor(props){
+        super(props)
+        this.state = {player: false}
+    }
+    clickHandler = (e) => {
+        console.log('clicked it', e.target)
+        this.setState({player: true})
+    }
+
     renderSong = (song) => {
-        const {name, length, imageURL} = song
-       return (<div className="row song-display">                 
-                    <div className="col-5">
+        const {id, name, length, imageURL} = song
+       return (<div key={id} className="row song-display">                 
+                    <div className="col-7">
                         <p>{name}  {length}</p>
                     </div>
-                    <div className="col-3">
-                        <i className="fas fa-play"></i>
+                    <div className="col-2">
+                        <i onClick={this.clickHandler} className="fas fa-play"></i>
                     </div>
-                    <div className="col-4">
+                    <div className="col-1">
                         <i className="fas fa-download"></i>
                     </div>                  
             </div>)
     }
 
     render(){
-        console.log('SONGINFO', this.props)
         if(!this.props.data.album) return <div> Loading... </div>
-        
+    
         return <div>
+        {this.state.player && <Player />}
        { this.props.data.album.songs.map(song => {
             return this.renderSong(song)
         })}
