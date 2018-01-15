@@ -17,7 +17,7 @@ class AlbumInfo extends Component {
        <div className="song-list">
         <br />
             <ul className="list-group">
-                <SongInfo albumId={1}/>
+                <SongInfo albumId={this.props.match.params.id}/>
             </ul>
             </div>
             </div>)
