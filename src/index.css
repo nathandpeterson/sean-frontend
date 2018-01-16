@@ -82,3 +82,13 @@ body {
   color:  rgba(220,220,220, .95);
   transition: 1s;
 }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.footer .badge {
+  font-size: 1.25rem;
+}
