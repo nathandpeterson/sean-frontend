@@ -9,8 +9,10 @@ class SongInfo extends Component {
         this.state = {player: false}
     }
     clickHandler = (e) => {
-        console.log('clicked it', e.target)
-        this.setState({player: true})
+        console.log('clicked it', e.target, this.props)
+       //this.props.location.pathname + '/' + e.target.id + '/play'
+        this.props.history.push( `${this.props.location.pathname}/${e.target.id}/play`)
+        // this.setState({player: true})
     }
 
     renderSong = (song) => {
@@ -20,7 +22,7 @@ class SongInfo extends Component {
                         <p>{name}  {length}</p>
                     </div>
                     <div className="col-2">
-                        <i onClick={this.clickHandler} className="fas fa-play"></i>
+                        <i id={ id } onClick={this.clickHandler} className="fas fa-play"></i>
                     </div>
                     <div className="col-1">
                         <i className="fas fa-download"></i>
@@ -29,6 +31,7 @@ class SongInfo extends Component {
     }
 
     render(){
+        console.log('SONGINFO PROPS',this.props)
         if(!this.props.data.album) return <div> Loading... </div>
     
         return <div>
@@ -41,5 +44,5 @@ class SongInfo extends Component {
 }
 
 export default graphql(FetchSongs, {
-    options: (props) => { return { variables: {id: props.albumId } } }
+    options: (props) => { return { variables: {id: props.match.params.id } } }
 })(SongInfo)

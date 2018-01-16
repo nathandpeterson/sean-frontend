@@ -7,7 +7,7 @@ import SongProgress from './SongProgress'
 class Player extends Component {
     constructor(props){
         super(props)
-        this.state = {playing: false,
+        this.state = {playing: true,
             currentSong: Hands,
             }
     }
@@ -38,11 +38,14 @@ class Player extends Component {
     componentWillUnmount () {
         this.clearRAF()
       }
+    renderPlayIcon() {
+        return this.state.playing ? "fas fa-pause" : "fas fa-play"
+    }
 
     render() {
         return <div>
-        <button className="btn btn-outline-secondary btn-block" onClick={this.playSong}> Play </button>
-        <br />
+            <i onClick={this.playSong} className={this.renderPlayIcon()}> </i>
+       
         {this.state.seek &&
         <SongProgress current={this.state.seek.toFixed(2) / this.state.duration.toFixed(2)}  />
         }

@@ -6,6 +6,7 @@ import { HttpLink } from 'apollo-link-http'
 import AlbumBrowser from './components/AlbumBrowser'
 import AlbumInfo from './components/AlbumInfo'
 import SongInfo from './components/SongInfo'
+import PlayView from './components/PlayView'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 const client = new ApolloClient({
@@ -19,8 +20,12 @@ const Home = () => {
     <Link to="/albums/1">
     <div className="list-group-item">cowboy hat sermons</div>
     </Link>
+    <Link to="/albums/2">
     <div className="list-group-item">smoof</div>
+    </Link>
+    <Link to="/albums/3">
     <div className="list-group-item">whatever</div>
+    </Link>
   </div>
   </div>
 }
@@ -37,7 +42,8 @@ class App extends Component {
                 <div className="card" onClick={ this.revealAlbumInfo } >
               <BrowserRouter>
                 <Switch>
-                 <Route path="/albums/:id/songs" component={ AlbumInfo } />
+                  <Route exact path="/albums/:id/songs/:songId/play" component={ PlayView } />
+                  <Route exact path="/albums/:id/songs" component={ AlbumInfo } />
                   <Route exact path="/albums/:id" component={ AlbumBrowser }/>
                   <Route path="/" component={ Home } />
                 </Switch>
