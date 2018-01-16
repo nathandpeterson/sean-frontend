@@ -13,23 +13,23 @@ class SongInfo extends Component {
     }
 
     renderSong = (song) => {
-        const {id, name, length} = song
+        const {id, name, length } = song
        return (<div key={id} className="row song-display">                 
-                    <div className="col-9">
+                    <div className="col-8">
                         <p>{name}  {length}</p>
                     </div>
                 
                     <div className="col-1">
-                        <i className="fas fa-download"></i>
+                        <i className="fas fa-download info-icon"></i>
                     </div>
+                    <div className="col-1"></div>
                     <div className="col-1">
-                        <i id={ id } onClick={this.clickHandler} className="fas fa-play"></i>
+                        <i id={ id } onClick={this.clickHandler} className="fas fa-play info-icon"></i>
                     </div>            
             </div>)
     }
 
     render(){
-        console.log('SONGINFO PROPS',this.props)
         if(!this.props.data.album) return <div> Loading... </div>
     
         return <div>

@@ -18,20 +18,16 @@ class PlayView extends Component {
                     </div>
                 </div> 
                 <div className="row">
-                    <div className="col-2"></div>
-                    <div className="col-10">
+                    <div className="col">
                         <div className="player-image-container">
-                            <div className="player-image">
-                            </div>
+                            <i className="fas fa-pause play-control"></i>
                         </div>
                     </div>
                 </div>
                         <Player song={this.props.data.song}/>
                         <Comments />
                 <div className="row">
-                <div className="col-1"> 
-                    <i className="fas fa-comments"></i>
-                </div>
+                    <i className="fas info-icon fa-comments"></i>
                 </div>
         </div>
     }

@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom'
 class AlbumInfo extends Component {
 
     render(){
-        console.log('ALBUMINFO', this.props)
+
         return  (<div>
                     <div className="row">        
                         <div className="col-1">

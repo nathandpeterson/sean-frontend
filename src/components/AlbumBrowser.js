@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo'
 import fetchAlbum from '../queries/fetchAlbum'
 import CoverImage from './CoverImage'
 import styled, { keyframes } from 'styled-components'
-import { flipInY } from 'react-animations'
+import { fadeIn } from 'react-animations'
 
 
 
@@ -14,18 +14,12 @@ class AlbumBrowser extends Component {
     }
 
     render() {
-       // Add a component to make this happen
-        const flipIn = keyframes`${flipInY}`
-        const FlippyDiv = styled.div`
-            animation: 1.5s ${flipIn};`
 
         const { album } = this.props.data
         if(!album) {return <div> Loading... </div>}
     
         return (<div onClick={this.revealAlbumInfo}>
-                    <FlippyDiv>
                       <CoverImage  album={ album }/>
-                    </FlippyDiv>
                      </div>)     
     }
 
