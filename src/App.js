@@ -5,7 +5,6 @@ import { ApolloProvider } from 'react-apollo'
 import { HttpLink } from 'apollo-link-http'
 import AlbumBrowser from './components/AlbumBrowser'
 import AlbumInfo from './components/AlbumInfo'
-import SongInfo from './components/SongInfo'
 import PlayView from './components/PlayView'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 

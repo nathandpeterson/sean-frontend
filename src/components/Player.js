@@ -41,8 +41,12 @@ class Player extends Component {
     renderPlayIcon() {
         return this.state.playing ? "fas fa-pause" : "fas fa-play"
     }
+    componentWillReceiveProps({song}){
+        this.setState({currentSong: song.audioURL})
+    }
 
     render() {
+        if(!this.props.song) return <div> No song, loading </div>
         return <div>
             <i onClick={this.playSong} className={this.renderPlayIcon()}> </i>
        

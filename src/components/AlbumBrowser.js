@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import fetchAlbum from '../queries/fetchAlbum'
-import AlbumInfo from './AlbumInfo'
 import CoverImage from './CoverImage'
-import { BrowserRouter, Route } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
-import { flipInY, flipOutY } from 'react-animations'
+import { flipInY } from 'react-animations'
 
 
 

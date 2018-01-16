@@ -9,24 +9,22 @@ class SongInfo extends Component {
         this.state = {player: false}
     }
     clickHandler = (e) => {
-        console.log('clicked it', e.target, this.props)
-       //this.props.location.pathname + '/' + e.target.id + '/play'
         this.props.history.push( `${this.props.location.pathname}/${e.target.id}/play`)
-        // this.setState({player: true})
     }
 
     renderSong = (song) => {
-        const {id, name, length, imageURL} = song
+        const {id, name, length} = song
        return (<div key={id} className="row song-display">                 
-                    <div className="col-7">
+                    <div className="col-9">
                         <p>{name}  {length}</p>
                     </div>
-                    <div className="col-2">
-                        <i id={ id } onClick={this.clickHandler} className="fas fa-play"></i>
-                    </div>
+                
                     <div className="col-1">
                         <i className="fas fa-download"></i>
-                    </div>                  
+                    </div>
+                    <div className="col-1">
+                        <i id={ id } onClick={this.clickHandler} className="fas fa-play"></i>
+                    </div>            
             </div>)
     }
 

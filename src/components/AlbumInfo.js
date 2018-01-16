@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import SongInfo from './SongInfo'
-import FetchSongs from '../queries/fetchSongs'
-import { graphql } from 'react-apollo'
 import { Route } from 'react-router-dom'
 
 class AlbumInfo extends Component {
