@@ -20,7 +20,6 @@ class PlayView extends Component {
     }
 
     toggleCommentView = () => {
-        console.log('toggleCommentView ', this.props)
         let currentState = Object.assign({}, this.state)
         this.state.commentView ? this.setState({...currentState, commentView: false}) 
         : this.setState({...currentState, commentView: true})
@@ -31,7 +30,6 @@ class PlayView extends Component {
     }
     
     render(){
-        console.log('IN PLAYVIEW RENDER', this.props)
         if(!this.props.data.song) return <div> Loading Song</div>
         return <div className="animated fadeIn container-fluid"> 
             <div className="row">        
@@ -60,7 +58,8 @@ class PlayView extends Component {
                         {this.props.data.song.comments.length || 0}
                     </span>
                 </div>
-                {this.state.commentView && <Comments comments={this.props.data.song.comments} />}
+                {this.state.commentView && 
+                <Comments song_id={this.props.data.song.id} comments={this.props.data.song.comments} />}
         </div>
     }
 }

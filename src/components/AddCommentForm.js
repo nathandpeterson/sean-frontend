@@ -1,34 +1,43 @@
 import React, { Component } from 'react'
+import { graphql } from 'react-apollo'
+import PostComment from '../queries/PostComment'
+import FetchSong from '../queries/FetchSong'
 
 class AddCommentForm extends Component {
     constructor(){
         super()
-        this.state ={name: '', text: ''}
+        this.state ={user: '', text: ''}
     }
     commentChange = (e) => {
         this.setState({text: e.target.value})
     }
     nameChange = (e) => {
-        this.setState({name: e.target.value})
+        this.setState({user: e.target.value})
     }
     submitComment =(e) => {
-        e.preventDefault()
-        console.log(this.state)
+        e.preventDefault()   
+        this.props.mutate({
+            variables: {
+                song_id: this.props.song_id, 
+                    text: this.state.text,
+                    user: this.state.user}
+        }).then(() => this.setState({text: '', user: ''}))
+            .then(() => this.props.toggleCommentForm())
     }
     render(){
         return <form>
-                    <label for="comment-field">Add a comment</label>
+                    <label htmlFor="comment-field">Add a comment</label>
                     <input  value={this.state.text} 
                             onChange={this.commentChange} 
                             id="comment-field" 
                             type="text" 
-                            class="form-control"/>
-                    <label for="name-field">Your name</label>
-                    <input  value={this.state.name} 
+                            className="form-control"/>
+                    <label htmlFor="name-field">Your name</label>
+                    <input  value={this.state.user} 
                             onChange={this.nameChange} 
                             id="name-field" 
                             type="text" 
-                            class="form-control"/>
+                            className="form-control"/>
                     <br />
                     <button type="submit" 
                             className="btn btn-block"
@@ -37,4 +46,6 @@ class AddCommentForm extends Component {
     }
 }
 
-export default AddCommentForm
+
+
+export default graphql(PostComment)(AddCommentForm)
