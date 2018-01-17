@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import CommentQuery from '../queries/CommentQuery'
-import { graphql } from 'react-apollo'
+import AddCommentForm from './AddCommentForm'
 
 class Comments extends Component {
 
@@ -14,6 +13,7 @@ class Comments extends Component {
             <div className="card add-comment">
                 <i className="fa fa-plus"></i> 
             </div>
+                <AddCommentForm />
         </div>
     }
 }

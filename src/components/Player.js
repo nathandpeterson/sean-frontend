@@ -41,7 +41,7 @@ class Player extends Component {
 
     componentWillReceiveProps(data){
         console.log('IN PLAYER', data)
-        if(data.togglePlaying) this.handleToggle()
+        if(data.playing !== this.state.playing) this.handleToggle()
         if(data.song) this.setState({currentSong: data.song.audioURL})
     }
 

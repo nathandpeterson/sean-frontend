@@ -21,8 +21,9 @@ class PlayView extends Component {
 
     toggleCommentView = () => {
         console.log('toggleCommentView ', this.props)
-        this.state.commentView ? this.setState({commentView: false}) 
-        : this.setState({commentView: true})
+        let currentState = Object.assign({}, this.state)
+        this.state.commentView ? this.setState({...currentState, commentView: false}) 
+        : this.setState({...currentState, commentView: true})
     }
 
     renderPlayIcon() {
@@ -50,7 +51,7 @@ class PlayView extends Component {
                 </div>
 
                 <Player song={this.props.data.song} 
-                        togglePlaying={this.state.toggleClick}
+                        playing={this.state.playing}
                         />
                         
                 <div className="row footer">
