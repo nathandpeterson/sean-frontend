@@ -11,7 +11,7 @@ class SongProgress extends Component {
     }
     render(){
         return(
-             <div className="progress">
+             <div className="animated fadeIn progress">
                 <div    className="progress-bar " 
                         role="progressbar" 
                         style={this.state.style} 

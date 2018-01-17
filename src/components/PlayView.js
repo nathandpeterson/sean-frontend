@@ -7,12 +7,22 @@ import FetchSong from '../queries/FetchSong'
 class PlayView extends Component {
     constructor(props){
         super(props)
-        this.state = {playing: false, toggleClick: ''}
+        this.state =   { playing: false, 
+                        toggleClick: '',
+                        commentView: false}
     }
 
     handleClick = () => {
-        this.state.playing ? this.setState({playing: false, toggleClick: ' '}) 
-        : this.setState({playing: true, toggleClick: ' '})
+        // state.toggleClick just triggers to tell the player to toggle in the componentWillReceiveProps
+        let currentState = Object.assign({}, this.state)
+        this.state.playing ? this.setState({...currentState, playing: false, toggleClick: ' '}) 
+        : this.setState({...currentState, playing: true, toggleClick: ' '})
+    }
+
+    toggleCommentView = () => {
+        console.log('toggleCommentView ', this.props)
+        this.state.commentView ? this.setState({commentView: false}) 
+        : this.setState({commentView: true})
     }
 
     renderPlayIcon() {
@@ -20,8 +30,9 @@ class PlayView extends Component {
     }
     
     render(){
-        if(!this.props.data) return <div> Loading </div>
-        return <div className="container-fluid"> 
+        console.log('IN PLAYVIEW RENDER', this.props)
+        if(!this.props.data.song) return <div> Loading Song</div>
+        return <div className="animated fadeIn container-fluid"> 
             <div className="row">        
                 <div className="col-1">
                     <i onClick={this.props.history.goBack} className="fas fa-arrow-left"></i>
@@ -34,16 +45,21 @@ class PlayView extends Component {
                         <div onClick={this.handleClick} className="player-image-container">
                             <i className={this.renderPlayIcon()}></i>
                         </div>
+                        <h5> {this.props.data.song.name}</h5>
                     </div>
                 </div>
 
-                <Player song={this.props.data.song} togglePlaying={this.state.toggleClick}/>
+                <Player song={this.props.data.song} 
+                        togglePlaying={this.state.toggleClick}
+                        />
                         
                 <div className="row footer">
-                    <i className="fas info-icon fa-comments"></i>
-                    <span className="badge badge-secondary">5</span>
+                    <i  onClick={ this.toggleCommentView }className="fas info-icon fa-comments"></i>
+                    <span className="badge badge-secondary">
+                        {this.props.data.song.comments.length || 0}
+                    </span>
                 </div>
-                <Comments />
+                {this.state.commentView && <Comments comments={this.props.data.song.comments} />}
         </div>
     }
 }

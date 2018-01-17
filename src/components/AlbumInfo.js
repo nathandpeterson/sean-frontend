@@ -6,7 +6,7 @@ class AlbumInfo extends Component {
 
     render(){
 
-        return  (<div>
+        return  (<div className="animated fadeIn">
                     <div className="row">        
                         <div className="col-1">
                      <i onClick={this.props.history.goBack} className="fas fa-arrow-left"></i>

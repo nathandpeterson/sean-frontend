@@ -92,3 +92,14 @@ body {
 .footer .badge {
   font-size: 1.25rem;
 }
+
+.add-comment {
+  margin: 1.5rem 0;
+  padding: .5rem;
+}
+
+.add-comment:hover {
+  background-color: aqua;
+  color:  rgba(220,220,220, .95);
+  transition: 1s;
+}
