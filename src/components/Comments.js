@@ -30,7 +30,8 @@ class Comments extends Component {
                 {!this.state.commentForm && this.renderAddCommentBtn()}
                 {this.state.commentForm &&
                 <AddCommentForm song_id={ this.props.song_id }
-                                toggleCommentForm={ this.toggleCommentForm }  />}
+                                toggleCommentForm={ this.toggleCommentForm }  
+                                refetch={ this.props.refetch}/>}
         </div>
     }
 }

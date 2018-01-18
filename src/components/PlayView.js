@@ -9,7 +9,8 @@ class PlayView extends Component {
         super(props)
         this.state =   { playing: false, 
                         toggleClick: '',
-                        commentView: false}
+                        commentView: false,
+                        backgroundImage: `https://images.unsplash.com/photo-1484151709479-3996843263cf?auto=format&fit=crop&w=750&q=80`}
     }
 
     handleClick = () => {
@@ -28,6 +29,11 @@ class PlayView extends Component {
     renderPlayIcon() {
         return this.state.playing ? "fas fa-pause play-control" : "fas fa-play play-control"
     }
+
+    componentWillReceiveProps({data}) {
+        const { song } = data
+        this.setState({backgroundImage: song.imageURL})
+    }
     
     render(){
         if(!this.props.data.song) return <div> Loading Song</div>
@@ -41,7 +47,9 @@ class PlayView extends Component {
                 </div> 
                 <div className="row">
                     <div className="col">
-                        <div onClick={this.handleClick} className="player-image-container">
+                        <div onClick={this.handleClick} 
+                            className="player-image-container"
+                            style={{backgroundImage: `url(${this.state.backgroundImage})`}}>
                             <i className={this.renderPlayIcon()}></i>
                         </div>
                         <h5> {this.props.data.song.name}</h5>
@@ -59,7 +67,9 @@ class PlayView extends Component {
                     </span>
                 </div>
                 {this.state.commentView && 
-                <Comments song_id={this.props.data.song.id} comments={this.props.data.song.comments} />}
+                <Comments   song_id={this.props.data.song.id} 
+                            comments={this.props.data.song.comments} 
+                            refetch={this.props.data.refetch}/>}
         </div>
     }
 }

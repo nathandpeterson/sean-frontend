@@ -13,7 +13,7 @@ class Player extends Component {
     }
 
     handleOnLoad = () => {
-        this.setState({loaded: true, duration: this.player.duration() })
+        this.setState({loaded: true, duration: this.player.duration()})
       }
     
     playSong = () => {
@@ -39,9 +39,9 @@ class Player extends Component {
         this.clearRAF()
       }
 
-    componentWillReceiveProps(data){
+    componentWillReceiveProps = async (data) => {
         if(data.playing !== this.state.playing) this.handleToggle()
-        if(data.song) this.setState({currentSong: data.song.audioURL})
+        if(data.song) await this.setState({currentSong: data.song.audioURL})
     }
 
     render() {

@@ -10,6 +10,7 @@ body {
 .main {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -102,4 +103,13 @@ body {
   background-color: aqua;
   color:  rgba(220,220,220, .95);
   transition: 1s;
+}
+
+.album-card {
+  padding: 1rem;
+  text-align: center;
+}
+
+.home-button {
+  width: 100%;
 }

@@ -21,7 +21,8 @@ class AddCommentForm extends Component {
                 song_id: this.props.song_id, 
                     text: this.state.text,
                     user: this.state.user}
-        }).then(() => this.setState({text: '', user: ''}))
+        })  .then(() => this.setState({text: '', user: ''}))
+            .then(() => this.props.refetch())
             .then(() => this.props.toggleCommentForm())
     }
     render(){
