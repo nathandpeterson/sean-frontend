@@ -7,7 +7,6 @@ import FetchAlbums from '../queries/FetchAlbums'
 class HomePage extends Component {
 
     render() {
-        console.log('HOME',this.props)
         if(!this.props.data.albums) return <div> Loading </div>
         const { albums } = this.props.data
         return <div className="container">
@@ -16,7 +15,7 @@ class HomePage extends Component {
              return  <div className="album-card" 
                             key={album.id}>
              <div className="card" style={{width:'100%'}}>
-             <img className="card-img-top" src={album.imageURL} alt="Card image cap"/>
+             <img className="card-img-top" src={album.imageURL} alt="Album cover"/>
              <div className="card-block">
                 <h4 className="card-title">{album.name}</h4>
                 <p className="card-text">{album.description}</p>
