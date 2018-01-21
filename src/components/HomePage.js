@@ -9,7 +9,7 @@ class HomePage extends Component {
     render() {
         if(!this.props.data.albums) return <div> Loading </div>
         const { albums } = this.props.data
-        return <div className="container">
+        return <div>
 
         {albums.map( album => {
              return  <div className="album-card" 

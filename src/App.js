@@ -17,14 +17,17 @@ const client = new ApolloClient({
 
 
 class App extends Component {
-  
+  constructor(){
+    super()
+
+    this.state = {}
+  }
+
   render() {
     return (
       <ApolloProvider client={ client }>
-        <div className="container main">
-          <div className="row">
-            <div className="main col-md">
-            <div className="card-container">
+      <div className="container main">
+        <div className="card-container">
                 <div className="card" onClick={ this.revealAlbumInfo } >
               <BrowserRouter>
                 <Switch>
@@ -34,10 +37,9 @@ class App extends Component {
                   <Route path="/" component={ HomePage } />
                 </Switch>
               </BrowserRouter>
-              </div>               
-              </div>            
-            </div>          
-          </div>
+              </div>
+              </div>                              
+          
         </div>
       </ApolloProvider>
     )
