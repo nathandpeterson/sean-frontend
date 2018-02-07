@@ -1,0 +1,31 @@
+
+.main {
+    flex-direction: column;
+}
+
+.card {
+    max-width: 100%;
+    max-height: 400px;
+  }
+
+.card img {
+    max-height: 300px;
+}
+
+
+@media(min-width: 600px){
+    .main {
+       justify-content: center;
+       margin: 2rem 10rem;
+
+    }
+    
+    .card {
+        max-height: 600px;
+        max-width: 600px;
+    }
+    .card img {
+       
+        max-height: 400px;
+    }
+}

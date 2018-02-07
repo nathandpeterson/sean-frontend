@@ -25,22 +25,15 @@ class App extends Component {
 
   render() {
     return (
-      <ApolloProvider client={ client }>
-      <div className="container main">
-        <div className="card-container">
-                <div className="card" onClick={ this.revealAlbumInfo } >
-              <BrowserRouter>
-                <Switch>
-                  <Route exact path="/albums/:id/songs/:songId/play" component={ PlayView } />
-                  <Route exact path="/albums/:id/songs" component={ AlbumInfo } />
-                  <Route exact path="/albums/:id" component={ AlbumBrowser }/>
-                  <Route path="/" component={ HomePage } />
-                </Switch>
-              </BrowserRouter>
-              </div>
-              </div>                              
-          
-        </div>
+      <ApolloProvider client={ client }>               
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/albums/:id/songs/:songId/play" component={ PlayView } />
+            <Route exact path="/albums/:id/songs" component={ AlbumInfo } />
+            <Route exact path="/albums/:id" component={ AlbumBrowser }/>
+            <Route path="/" component={ HomePage } />
+          </Switch>
+        </BrowserRouter>
       </ApolloProvider>
     )
   }
