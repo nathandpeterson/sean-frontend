@@ -15,9 +15,9 @@ class AlbumBrowser extends Component {
         if(!album) {return <div> Loading... </div>}
         
         return (    <div>
-                    <div onClick={this.revealAlbumInfo}>
-                      <CoverImage  album={ album }/>
-                     </div>
+                        <div onClick={this.revealAlbumInfo}>
+                            <CoverImage  album={ album }/>
+                        </div>
                      </div>)     
     }
 

@@ -10,7 +10,7 @@ import HomePage from './components/HomePage'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://sean-api.herokuapp.com/graphql' }),
+  link: new HttpLink({ uri: 'http://localhost:4000/graphql' }),
   cache: new InMemoryCache(),
   dataIdFromObject: object => object.id,
 })
@@ -25,15 +25,17 @@ class App extends Component {
 
   render() {
     return (
-      <ApolloProvider client={ client }>               
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/albums/:id/songs/:songId/play" component={ PlayView } />
-            <Route exact path="/albums/:id/songs" component={ AlbumInfo } />
-            <Route exact path="/albums/:id" component={ AlbumBrowser }/>
-            <Route path="/" component={ HomePage } />
-          </Switch>
-        </BrowserRouter>
+      <ApolloProvider client={ client }>         
+        <div className="container-fluid">      
+         <BrowserRouter>
+            <Switch>
+              <Route exact path="/albums/:id/songs/:songId/play" component={ PlayView } />
+              <Route exact path="/albums/:id/songs" component={ AlbumInfo } />
+              <Route exact path="/albums/:id" component={ AlbumBrowser }/>
+              <Route path="/" component={ HomePage } />
+           </Switch>
+          </BrowserRouter>
+        </div>
       </ApolloProvider>
     )
   }

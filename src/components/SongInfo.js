@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import FetchSongs from '../queries/fetchSongs'
-import { graphql } from 'react-apollo'
 import Player from './Player'
+import { withRouter } from 'react-router-dom'
 
 class SongInfo extends Component {
     constructor(props){
@@ -12,7 +11,7 @@ class SongInfo extends Component {
         this.props.history.push( `${this.props.location.pathname}/${e.target.id}/play`)
     }
 
-    renderSong = (song) => {
+    renderSong = song => {
         const {id, name, length } = song
        return (<div key={id} className="row song-display">                 
                     <div className="col-8">
@@ -30,17 +29,13 @@ class SongInfo extends Component {
     }
 
     render(){
-        if(!this.props.data.album) return <div> Loading... </div>
-    
-        return <div>
+        if(!this.props.songs) return <div> Loading... </div>
+        const { songs } = this.props
+        return <div> 
         {this.state.player && <Player />}
-       { this.props.data.album.songs.map(song => {
-            return this.renderSong(song)
-        })}
+        {songs.map(song => this.renderSong(song))}
         </div>
     }
 }
 
-export default graphql(FetchSongs, {
-    options: (props) => { return { variables: {id: props.match.params.id } } }
-})(SongInfo)
+export default withRouter(SongInfo)

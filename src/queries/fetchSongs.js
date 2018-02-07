@@ -1,7 +1,6 @@
 import gql from 'graphql-tag'
 
-export default gql`
-query songQuery($id: ID!) {
+export default gql` query songQuery($id: ID!) {
     album(id: $id) {
         id
         songs {
