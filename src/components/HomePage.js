@@ -4,6 +4,20 @@ import { graphql } from 'react-apollo'
 import FetchAlbums from '../queries/FetchAlbums'
 import '../styles/HomePageStyle.css'
 
+const AlbumCard = album => {
+    const { id, imageURL, artist, name, description } = album.album
+    return <div className="card">
+    <img className="card-img-top" src={imageURL} alt="Album cover"/>
+    <div className="card-body">
+        <h4 className="card-title">{name}</h4>
+        <h4 className="card-subtitle mb-2 text-muted">{artist}</h4>
+        <p className="card-text">{description}</p>
+        <Link className="center" to={`/albums/${id}`}>
+            <button className="btn btn-secondary">listen</button>
+        </Link>
+        </div>
+    </div> }
+
 
 class HomePage extends Component {
 
@@ -14,21 +28,7 @@ class HomePage extends Component {
            <div className="row">
                 <div className="col center">
                     <div className="main">
-                    {albums.map( album => {
-                        const { id, imageURL, name, description } = album
-                            return  <div key={id}>
-                            <div className="card">
-                            <img className="card-img-top" src={imageURL} alt="Album cover"/>
-                            <div className="card-body">
-                                <h4 className="card-title">{name}</h4>
-                                <p className="card-text">{description}</p>
-                                <Link className="center" to={`/albums/${id}`}>
-                                    <button className="btn btn-secondary">listen</button>
-                                </Link>
-                                </div>
-                            </div>
-                        </div>
-        })}     
+                    {albums.map( album => <AlbumCard key={album.id} album={album}/>)}     
                     </div>
                 </div>
             </div>
