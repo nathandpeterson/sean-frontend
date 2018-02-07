@@ -59,17 +59,6 @@ class PlayView extends Component {
                 <Player song={this.props.data.song} 
                         playing={this.state.playing}
                         />
-                        
-                <div className="row footer">
-                    <i  onClick={ this.toggleCommentView }className="fas info-icon fa-comments"></i>
-                    <span className="badge badge-secondary">
-                        {this.props.data.song.comments.length || 0}
-                    </span>
-                </div>
-                {this.state.commentView && 
-                <Comments   song_id={this.props.data.song.id} 
-                            comments={this.props.data.song.comments} 
-                            refetch={this.props.data.refetch}/>}
         </div>
     }
 }
