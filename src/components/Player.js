@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactHowler from 'react-howler'
-import Hands from '../audio/Hands.mp3'
 import raf from 'raf' 
 import SongProgress from './SongProgress'
 
@@ -8,7 +7,7 @@ class Player extends Component {
     constructor(props){
         super(props)
         this.state = {playing: false,
-            currentSong: Hands,
+            currentSong: this.props.song.aud,
             }
     }
 
@@ -45,18 +44,20 @@ class Player extends Component {
     }
 
     render() {
+        console.log('PLAYER', this.props)
         if(!this.props.song) return <div> No song, loading </div>
         return <div>
        
         {this.state.seek &&
         <SongProgress current={this.state.seek.toFixed(2) / this.state.duration.toFixed(2)}  />
         }
-        <ReactHowler    src={this.state.currentSong} 
+        {this.state.currentSong && <ReactHowler    src={this.state.currentSong} 
                         playing={this.state.playing}
                         onLoad={this.handleOnLoad}
                         onPlay={this.handleOnPlay}
                         onEnd={this.handleOnEnd}
-                        ref={(ref) => (this.player = ref)}/>
+                        ref={(ref) => (this.player = ref)}/>}
+
         </div>
     }
 }

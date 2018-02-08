@@ -1,7 +1,7 @@
 body {
   margin: 0 auto;
   font-family: sans-serif;
-  background-color: grey;
+  background-image: url('./styles/img/ep_naturalblack.png');
   box-sizing: border-box;
 }
 
@@ -9,7 +9,6 @@ body {
   display: flex;
   justify-content: center;
 }
-
 
 .album-cover-container {
   display: flex;
@@ -34,18 +33,6 @@ body {
   color: gray;
   transition: 1s;
   border: 1px black solid;
-}
-
-
-.album-info {
-  width: 100%;
-}
-
-
-.song-display {
-  border: .5px solid rgba(136,136,136, .8);
-  border-radius: 4%;
-  width: 100%;
 }
 
 .progress {
@@ -83,17 +70,6 @@ body {
 
 .footer .badge {
   font-size: 1.25rem;
-}
-
-.add-comment {
-  margin: 1.5rem 0;
-  padding: .5rem;
-}
-
-.add-comment:hover {
-  background-color: aqua;
-  color:  rgba(220,220,220, .95);
-  transition: 1s;
 }
 
 .album-card {

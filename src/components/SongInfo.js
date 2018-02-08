@@ -13,7 +13,7 @@ class SongInfo extends Component {
 
     renderSong = song => {
         const {id, name, length } = song
-       return (<div key={id} className="row song-display">                 
+       return (<div key={id} className="row">                 
                     <div className="col-8">
                         <p>{name}  {length}</p>
                     </div>

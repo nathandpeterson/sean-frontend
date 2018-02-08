@@ -3,6 +3,7 @@ import Player from './Player'
 import Comments from './Comments'
 import { graphql } from 'react-apollo'
 import FetchSong from '../queries/FetchSong'
+import '../styles/PlayView.css'
 
 class PlayView extends Component {
     constructor(props){
@@ -37,29 +38,22 @@ class PlayView extends Component {
     
     render(){
         if(!this.props.data.song) return <div> Loading Song</div>
-        return <div className="animated fadeIn container-fluid"> 
-            <div className="row">        
-                <div className="col-1">
+        return <div className="center">
+           
+            <div className="play-view card">      
                     <i onClick={this.props.history.goBack} className="fas fa-arrow-left"></i>
-                </div>
-                    <div className="col-10">
-                    </div>
-                </div> 
-                <div className="row">
-                    <div className="col">
                         <div onClick={this.handleClick} 
                             className="player-image-container"
                             style={{backgroundImage: `url(${this.state.backgroundImage})`}}>
                             <i className={this.renderPlayIcon()}></i>
                         </div>
                         <h5> {this.props.data.song.name}</h5>
-                    </div>
-                </div>
-
                 <Player song={this.props.data.song} 
                         playing={this.state.playing}
                         />
         </div>
+        </div>
+      
     }
 }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SongInfo from './SongInfo'
 import { graphql, withApollo } from 'react-apollo'
 import fetchSongs from '../queries/fetchSongs'
+import '../styles/AlbumInfo.css'
 
 class AlbumInfo extends Component {
 
